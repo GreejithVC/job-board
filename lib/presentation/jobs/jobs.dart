@@ -39,9 +39,9 @@ class Jobs extends ConsumerWidget {
             ),
             onPressed: () {
               ref.read(themeNotifierProvider.notifier).state =
-                  themeMode == ThemeMode.light
+                  (themeMode == ThemeMode.light
                       ? ThemeMode.dark
-                      : ThemeMode.light;
+                      : ThemeMode.light);
             },
           ),
         ],

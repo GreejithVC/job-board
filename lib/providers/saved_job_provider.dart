@@ -37,9 +37,4 @@ class SavedJobsNotifier extends AsyncNotifier<List<JobModel>> {
     await prefs.setString(_key, jsonEncode(updated.map((j) => j.toJson()).toList()));
     state = AsyncData(updated);
   }
-
-  bool isSaved(JobModel job) {
-    final current = state.value ?? [];
-    return current.any((j) => j.id == job.id);
-  }
 }
