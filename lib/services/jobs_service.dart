@@ -18,7 +18,6 @@ class JobService {
     }
   }
 
-
   Future<JobModel> createJob(JobModel job) async {
     final response = await apiHandler.post(
       url: ApiUrls.jobs,
@@ -39,24 +38,5 @@ class JobService {
     } else {
       throw Exception("Invalid response format for single job details");
     }
-  }
-
-
-  Future<JobModel> updateJob({required int id, required JobModel user}) async {
-    final response = await apiHandler.put(
-      url: "${ApiUrls.jobs}/$id",
-      body: user.toJson(),
-    );
-
-    if (response is Map<String, dynamic>) {
-      return JobModel.fromJson(response);
-    } else {
-      throw Exception("Failed to update job");
-    }
-  }
-
-  Future<bool> deleteJob(String id) async {
-    final response = await apiHandler.delete(url: "${ApiUrls.jobs}/$id");
-    return response != null;
   }
 }

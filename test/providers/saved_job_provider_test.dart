@@ -36,18 +36,7 @@ void main(){
  });
 
 
- test("toggles - adds job if not present", () async {
-   final notifier = container.read(savedJobsProvider.notifier);
-   await notifier.toggle(job);
-   final updated = container.read(savedJobsProvider);
-   expect((updated as AsyncData).value, [job]);
-   final prefs = await SharedPreferences.getInstance();
-   final stored = prefs.getString("saved_jobs");
-   final storedList = (jsonDecode(stored!) as List)
-       .map((e) => JobModel.fromJson(e))
-       .toList();
-   expect(storedList, [job]);
- });
+
 
  test("toggles - remove job if  present", () async {
    final notifier = container.read(savedJobsProvider.notifier);
@@ -61,6 +50,18 @@ void main(){
        .map((e) => JobModel.fromJson(e))
        .toList();
    expect(storedList, [ ]);
+ });
+ test("toggles - adds job if not present", () async {
+   final notifier = container.read(savedJobsProvider.notifier);
+   await notifier.toggle(job);
+   final updated = container.read(savedJobsProvider);
+   expect((updated as AsyncData).value, [job]);
+   final prefs = await SharedPreferences.getInstance();
+   final stored = prefs.getString("saved_jobs");
+   final storedList = (jsonDecode(stored!) as List)
+       .map((e) => JobModel.fromJson(e))
+       .toList();
+   expect(storedList, [job]);
  });
 
 
