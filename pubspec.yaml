@@ -1,5 +1,10 @@
 name: job_board
-description: "A new Flutter project."
+description: "A new Flutter project.
+state management -Riverpod
+API integration - DIO
+DataBase - Shared Preference / mockapi
+Freezed Model
+"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -38,6 +43,7 @@ dependencies:
   dio: ^5.8.0+1
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:

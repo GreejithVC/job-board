@@ -37,7 +37,6 @@ class JobNotifier extends AsyncNotifier<List<JobModel>> {
     try {
       final created = await _jobService.createJob(job);
 
-
       if (currentState is AsyncData<List<JobModel>>) {
         final value = currentState.value;
         state = AsyncData([...value, created]);
@@ -80,7 +79,10 @@ class JobNotifier extends AsyncNotifier<List<JobModel>> {
 final jobNotifierProvider = AsyncNotifierProvider<JobNotifier, List<JobModel>>(
   () => JobNotifier(),
 );
-final jobDetailsProvider = FutureProvider.family<JobModel, String>((ref, id) async {
+final jobDetailsProvider = FutureProvider.family<JobModel, String>((
+  ref,
+  id,
+) async {
   final jobService = ref.watch(jobServiceProvider);
   return jobService.fetchJobById(id);
 });

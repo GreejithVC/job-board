@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$JobModel {
 
-@JsonKey(name: "id") String get id; String get title; String get company; String get location; String get description;
+ String get id; String get title; String get company; String get location; String get description;
 /// Create a copy of JobModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $JobModelCopyWith<$Res>  {
   factory $JobModelCopyWith(JobModel value, $Res Function(JobModel) _then) = _$JobModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: "id") String id, String title, String company, String location, String description
+ String id, String title, String company, String location, String description
 });
 
 
@@ -84,10 +84,10 @@ as String,
 @JsonSerializable()
 
 class _JobModel implements JobModel {
-  const _JobModel({@JsonKey(name: "id") this.id = "", required this.title, required this.company, required this.location, required this.description});
+  const _JobModel({this.id = "", required this.title, required this.company, required this.location, required this.description});
   factory _JobModel.fromJson(Map<String, dynamic> json) => _$JobModelFromJson(json);
 
-@override@JsonKey(name: "id") final  String id;
+@override@JsonKey() final  String id;
 @override final  String title;
 @override final  String company;
 @override final  String location;
@@ -126,7 +126,7 @@ abstract mixin class _$JobModelCopyWith<$Res> implements $JobModelCopyWith<$Res>
   factory _$JobModelCopyWith(_JobModel value, $Res Function(_JobModel) _then) = __$JobModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: "id") String id, String title, String company, String location, String description
+ String id, String title, String company, String location, String description
 });
 
 

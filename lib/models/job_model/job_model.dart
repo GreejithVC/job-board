@@ -15,6 +15,7 @@ abstract class JobModel with _$JobModel {
 
   factory JobModel.fromJson(Map<String, dynamic> json) =>
       _$JobModelFromJson(json);
+
 }
 
 
