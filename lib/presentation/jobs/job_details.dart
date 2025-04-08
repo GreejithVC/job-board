@@ -3,7 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_board/models/job_model/job_model.dart';
 import 'package:job_board/presentation/jobs/save_button.dart';
 
-import '../../providers/jobs_provider.dart';
+import '../../providers/job_details_provider.dart';
+
 
 class JobDetails extends ConsumerWidget {
   final String id;

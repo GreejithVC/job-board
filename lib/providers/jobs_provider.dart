@@ -47,42 +47,9 @@ class JobNotifier extends AsyncNotifier<List<JobModel>> {
       state = AsyncError(e, st);
     }
   }
-
-  Future<void> deleteJob(String id) async {
-    final currentState = state;
-
-    state = const AsyncLoading();
-
-    try {
-      await _jobService.deleteJob(id);
-
-      if (currentState case AsyncData(:final value)) {
-        state = AsyncData(value.where((user) => user.id != id).toList());
-      } else {
-        state = const AsyncData([]);
-      }
-    } catch (e, st) {
-      state = AsyncError(e, st);
-    }
-  }
-
-  void updateJob(JobModel updatedJob) {
-    if (state case AsyncData(:final value)) {
-      state = AsyncData([
-        for (final user in value)
-          if (user.id == updatedJob.id) updatedJob else user,
-      ]);
-    }
-  }
 }
 
 final jobNotifierProvider = AsyncNotifierProvider<JobNotifier, List<JobModel>>(
   () => JobNotifier(),
 );
-final jobDetailsProvider = FutureProvider.family<JobModel, String>((
-  ref,
-  id,
-) async {
-  final jobService = ref.watch(jobServiceProvider);
-  return jobService.fetchJobById(id);
-});
+
