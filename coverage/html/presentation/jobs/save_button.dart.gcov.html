@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">70.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">10</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-09 13:08:34</td>
+            <td class="headerValue">2025-04-09 13:12:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -69,19 +69,19 @@
 <span id="L7"><span class="lineNum">       7</span>              : class SaveButton extends ConsumerWidget {</span>
 <span id="L8"><span class="lineNum">       8</span>              :   final JobModel job;</span>
 <span id="L9"><span class="lineNum">       9</span>              : </span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">           2 :   const SaveButton({super.key, required this.job});</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">           3 :   const SaveButton({super.key, required this.job});</span></span>
 <span id="L11"><span class="lineNum">      11</span>              : </span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           2 :   @override</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           3 :   @override</span></span>
 <span id="L13"><span class="lineNum">      13</span>              :   Widget build(BuildContext context, WidgetRef ref) {</span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           4 :     final savedJobs = ref.watch(savedJobsProvider);</span></span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           2 :     final isSaved = savedJobs.maybeWhen(</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :       data: (jobs) =&gt; jobs.any((j) =&gt; j.id == job.id),</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           2 :       orElse: () =&gt; false,</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           6 :     final savedJobs = ref.watch(savedJobsProvider);</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           3 :     final isSaved = savedJobs.maybeWhen(</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           7 :       data: (jobs) =&gt; jobs.any((j) =&gt; j.id == job.id),</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           3 :       orElse: () =&gt; false,</span></span>
 <span id="L18"><span class="lineNum">      18</span>              :     );</span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           2 :     return IconButton(</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           2 :       icon: Icon(isSaved ? Icons.bookmark : Icons.bookmark_border),</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :       onPressed: () {</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :         ref.read(savedJobsProvider.notifier).toggle(job);</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           3 :     return IconButton(</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           3 :       icon: Icon(isSaved ? Icons.bookmark : Icons.bookmark_border),</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           1 :       onPressed: () {</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           5 :         ref.read(savedJobsProvider.notifier).toggle(job);</span></span>
 <span id="L23"><span class="lineNum">      23</span>              :       },</span>
 <span id="L24"><span class="lineNum">      24</span>              :     );</span>
 <span id="L25"><span class="lineNum">      25</span>              :   }</span>
