@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-08 18:00:58</td>
+            <td class="headerValue">2025-04-09 12:19:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -73,14 +73,14 @@
 <span id="L11"><span class="lineNum">      11</span>              : class JobNotifier extends AsyncNotifier&lt;List&lt;JobModel&gt;&gt; {</span>
 <span id="L12"><span class="lineNum">      12</span>              :   JobService _jobService = JobService();</span>
 <span id="L13"><span class="lineNum">      13</span>              : </span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           1 :   @visibleForTesting</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           2 :   @visibleForTesting</span></span>
 <span id="L15"><span class="lineNum">      15</span>              :   set jobService(JobService value) {</span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           1 :     _jobService = value;</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           2 :     _jobService = value;</span></span>
 <span id="L17"><span class="lineNum">      17</span>              :   }</span>
 <span id="L18"><span class="lineNum">      18</span>              : </span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           1 :   @override</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           2 :   @override</span></span>
 <span id="L20"><span class="lineNum">      20</span>              :   Future&lt;List&lt;JobModel&gt;&gt; build() async {</span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           2 :     return await _jobService.fetchJobs(page: 1);</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           4 :     return await _jobService.fetchJobs(page: 1);</span></span>
 <span id="L22"><span class="lineNum">      22</span>              :   }</span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           1 :   Future&lt;void&gt; fetchJobs({int page = 1}) async {</span></span>
@@ -93,15 +93,15 @@
 <span id="L31"><span class="lineNum">      31</span>              :     }</span>
 <span id="L32"><span class="lineNum">      32</span>              :   }</span>
 <span id="L33"><span class="lineNum">      33</span>              : </span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           1 :   Future&lt;void&gt; addJob(JobModel job) async {</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           1 :     final currentState = state;</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           1 :     state = const AsyncLoading();</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           2 :   Future&lt;void&gt; addJob(JobModel job) async {</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           2 :     final currentState = state;</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           2 :     state = const AsyncLoading();</span></span>
 <span id="L37"><span class="lineNum">      37</span>              :     try {</span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           2 :       final created = await _jobService.createJob(job);</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           4 :       final created = await _jobService.createJob(job);</span></span>
 <span id="L39"><span class="lineNum">      39</span>              : </span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           1 :       if (currentState is AsyncData&lt;List&lt;JobModel&gt;&gt;) {</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           1 :         final value = currentState.value;</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           4 :         state = AsyncData([...value, created]);</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           2 :       if (currentState is AsyncData&lt;List&lt;JobModel&gt;&gt;) {</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           2 :         final value = currentState.value;</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           8 :         state = AsyncData([...value, created]);</span></span>
 <span id="L43"><span class="lineNum">      43</span>              :       } else {</span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :         state = AsyncData([created]);</span></span>
 <span id="L45"><span class="lineNum">      45</span>              :       }</span>
@@ -111,7 +111,7 @@
 <span id="L49"><span class="lineNum">      49</span>              :   }</span>
 <span id="L50"><span class="lineNum">      50</span>              : }</span>
 <span id="L51"><span class="lineNum">      51</span>              : </span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">           3 : final jobNotifierProvider = AsyncNotifierProvider&lt;JobNotifier, List&lt;JobModel&gt;&gt;(</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">           6 : final jobNotifierProvider = AsyncNotifierProvider&lt;JobNotifier, List&lt;JobModel&gt;&gt;(</span></span>
 <span id="L53"><span class="lineNum">      53</span> <span class="tlaUNC">           0 :   () =&gt; JobNotifier(),</span></span>
 <span id="L54"><span class="lineNum">      54</span>              : );</span>
 <span id="L55"><span class="lineNum">      55</span>              : </span>
