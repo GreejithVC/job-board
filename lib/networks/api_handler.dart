@@ -40,31 +40,7 @@ class ApiHandler {
     return _response(response);
   }
 
-  Future<dynamic> put({
-    required String url,
-    Map<String, dynamic>? body,
-    Map<String, String>? headers,
-  }) async {
-    final response = await _dio.put(
-      url,
-      data: body,
-      options: Options(headers: headers),
-    );
-    return _response(response);
-  }
 
-  Future<dynamic> delete({
-    required String url,
-    Map<String, dynamic>? body,
-    Map<String, String>? headers,
-  }) async {
-    final response = await _dio.delete(
-      url,
-      data: body,
-      options: Options(headers: headers),
-    );
-    return _response(response);
-  }
 
   dynamic _response(Response response) {
     if (response.statusCode == 204) return null;
